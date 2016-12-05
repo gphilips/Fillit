@@ -4,51 +4,50 @@
 int		ft_check_char(char *buff)
 {
 	int		i;
-	int		count;
+	int		point;
+	int		sharp;
+	int		endline;
 
 	i = 0;
-	count = 0;
-	while (buff[i] != '\0' && buff[i] != '\n')
+	point = 0;
+	sharp = 0;
+	endline = 0;
+	while (buff[i] && (buff[i] == '.' || buff[i] == '#' || buff[i] == '\n'))
 	{
-		if (buff[i] == '.' || buff[i] == '#')
-			count++;
-		else
-		{
-			//ft_putendl_fd("A char is not valid", 2);
-			return (0);
-		}
-		if (count == 4 && buff[i + 1] == '\n')
-			return (1);
+		if (buff[i] == '.')
+			point++;
+		if (buff[i] == '#')
+			sharp++;
+		if (buff[i] == '\n')
+			endline++;
 		i++;
 	}
+	if (point == 12 && sharp == 4 && endline == 4)
+		return (1);
+	else
+		ft_putendl("Error");
 	return (0);
 }
 
 int		ft_check_line(char *buff)
 {
 	int			i;
-	int			line_valid;
+	int			line;
 
 	i = 0;
-	line_valid = 0;
+	line = 0;
 	while (buff[i])
 	{
-		if (buff[i] == '\n' && ft_check_char(buff) == 1)
-			line_valid++;
-		if (line_valid == 4)
-		{
-			if (buff[i + 1] == '\n' && (buff[i + 1] == '.' || buff[i + 1] == '#'))
-			{
-				line_valid = 0;
-				i++;
-			}
-			return (1);
-		}
+		if (buff[i] == '\n')
+			line++;
+		if (line > 4)
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
+/*
 int		ft_check_form(char *buff)
 {
 	int		i;
@@ -67,6 +66,7 @@ int		ft_check_form(char *buff)
 	}
 	return (0);
 }
+*/
 
 int		main(int argc, char **argv)
 {
@@ -74,7 +74,7 @@ int		main(int argc, char **argv)
 	int		rd;
 	int		checkchar;
 	int		checkline;
-	int		checkform;
+//	int		checkform;
 	char	buff[BUFF_SIZE + 1];
 
 	if (argc != 2)
@@ -85,7 +85,7 @@ int		main(int argc, char **argv)
 	if ((fd = open(argv[1], O_RDONLY)))
 	{
 		if ((rd = read(fd, buff, BUFF_SIZE) > 0))
-			ft_putendl_fd(buff, 1);
+			ft_putendl(buff);
 		if (rd == 0)
 		{
 			ft_putendl_fd("Error: read 0", 2);
@@ -104,10 +104,10 @@ int		main(int argc, char **argv)
 	}
 	checkchar = ft_check_char(buff);
 	checkline = ft_check_line(buff);
-	checkform = ft_check_form(buff);
+//	checkform = ft_check_form(buff);
 	printf("Resultat checkchar: %d\n", checkchar);
 	printf("Resultat checkline: %d\n", checkline);
-	printf("Resultat checkform: %d\n", checkform);
+//	printf("Resultat checkform: %d\n", checkform);
 	close(fd);
 	return (0);
 }

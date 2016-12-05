@@ -20,20 +20,10 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 
-#define BUFF_SIZE 22
+#define BUFF_SIZE 20
 
-typedef struct			s_tetris
-{
-	char				**tetris;
-	char				letter;
-	int					x;
-	int					y;
-	struct s_tetris		*next;
-}						t_tetris;
-
-int					ft_check_char(char *buffer);
-int					ft_check_line(char *buffer);
-int					ft_check_form(char *buffer);
-char					ft_nb_tetris(char *buff);
+int					ft_check_char(char *buff);
+int					ft_check_line(char *buff);
+char				ft_nb_tetris(char *buff);
 
 #endif
