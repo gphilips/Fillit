@@ -5,18 +5,6 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 19:34:15 by gphilips          #+#    #+#             */
-/*   Updated: 2016/12/06 19:34:16 by gphilips         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:22:49 by gphilips          #+#    #+#             */
 /*   Updated: 2016/12/06 18:14:47 by gphilips         ###   ########.fr       */
 /*                                                                            */
@@ -39,13 +27,17 @@
 typedef struct		s_tetris
 {
 	char			**tetris;
-	char			letter;
-	struct s_tetris	*prev;
+	int				x;
+	int				y;
 	struct s_tetris	*next;
 }					t_tetris;
-int					ft_check_char(char *buff);
-int					ft_check_line(char *buff);
-int					ft_read_tetris(char *argv);
-char				ft_nb_tetris(char *buff);
+int					ft_check_all(char **tab);
+char				**ft_read_tetris(char *argv);
+char				**ft_buff_to_tab(char **tab, char *buff);
+int					ft_count_tetris(char *buff);
+t_tetris			*ft_lst_new_tetris(char **tab, int id);
+t_tetris			*ft_tab_to_lst(char **tab);
+char				**ft_alphabet(char **tab, int id);
+void				ft_print_tetris(t_tetris *first);
 
 #endif
