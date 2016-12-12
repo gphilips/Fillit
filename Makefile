@@ -12,9 +12,15 @@
 
 NAME = fillit
 
-FILES =
+FILES = list.c			\
+		check_tetris.c	\
+		count_tetris.c	\
+		get_tetris.c	\
+		read.c			\
+		alphabet.c		\
+		main.c			\
 
-HEADER = fillit.h
+LIB = libft.a
 
 OBJ = $(FILES:.c=.o)
 
@@ -23,8 +29,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c $(FILES) $(HEADER)
-
+	gcc $(FLAGS) -o $(NAME) $(FILES) $(LIB) 
 clean:
 	rm -f $(OBJ)
 
