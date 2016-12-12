@@ -12,30 +12,40 @@
 
 #include "fillit.h"
 
-int		ft_read_tetris(char *argv)
+char	**ft_read_tetris(char *argv)
 {
-	int		fd;
-	int		rd;
-	char	buff[BUFF_SIZE + 1];
+	int			fd;
+	int			rd;
+	char		buff[BUFF_SIZE + 1];
+	char		**tab;
+	int			i = 0;
 
+	tab = NULL;
 	if ((fd = open(argv, O_RDONLY)) == -1)
 	{
-		ft_putendl("Cannot open the file");
-		return (0);
+		ft_putendl("Cannot open the file, it's might be empty");
+		return (NULL);
 	}
-	rd = read(fd, buff, BUFF_SIZE);
-	if (rd > 0)
+	if ((rd = read(fd, buff, BUFF_SIZE)) > 0)
 		buff[rd] = '\0';
 	else if (rd == 0)
 	{
-		ft_putendl("The file is Empty");
-		return (0);
+		ft_putendl("Error: The file is Empty");
+		return (NULL);
 	}
 	else
 	{
-		ft_putendl("Cannot read the file");
-		return (0);
+		ft_putendl("Error: Cannot read the file");
+		return (NULL);
 	}
-	return (1);
+	tab = ft_buff_to_tab(tab, buff);
+	while (tab[i])
+	{
+		printf("Tab %d: \n %s \n", i + 1, tab[i]);
+		i++;
+	}
+	printf("Checkall: %d\n", ft_check_all(tab));
+	printf("Nb tetris: %d\n", ft_count_tetris(buff));
+	return (tab);
 }
 

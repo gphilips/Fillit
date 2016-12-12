@@ -10,34 +10,61 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit"
+#include "fillit.h"
 
-t_tetris	ft_get_tetris(t_tetris *list, t_tetris *new, char **map, int id)
+t_tetris	*ft_lst_new_tetris(char **tab, int id)
 {
-	if (!(new = (t_tetris*)malloc(sizeof(t_tetris))))
+	t_tetris	*new_tetris;
+
+	new_tetris = NULL;
+	if (!(new_tetris = (t_tetris*)malloc(sizeof(t_tetris))))
 		return (NULL);
-	if (first == NULL)
+	new_tetris->tetris = ft_alphabet(tab, id);
+	new_tetris->x = 0;
+	new_tetris->y = 0;
+	new_tetris->next = NULL;
+	return (new_tetris);
+}
+
+t_tetris	*ft_tab_to_lst(char **tab)
+{
+	t_tetris	*new_tetris;
+	t_tetris	*first;
+	int			nb_tetris;
+	int			i;
+	
+	i = 0;
+	nb_tetris = 0;
+	new_tetris = NULL;
+	first = NULL;
+	new_tetris = ft_lst_new_tetris(&tab[0], 0);
+	first = new_tetris;
+	i = 1;
+	while (tab[nb_tetris])
+		nb_tetris++;
+	while (i < nb_tetris)
 	{
-		new->tetris = ft_strdup(tetris);
-		new->letter = 'A' + id;
-		new->prev = NULL;
+		first->next = ft_lst_new_tetris(&tab[i], i);
+		i++;
 		first = first->next;
 	}
 	return (new_tetris);
 }
 
-/*	
-t_tetris 	ft_print_tetris(t_tetris *first)
+/* ____FONCTION TEST____ */
+void	ft_print_tetris(t_tetris *list)
 {
-	int		i;
+	t_tetris	*first;
+	int			i;
 
-	i = 0;
+	first = NULL;
+	first = list;
+	i = 1;
 	while (first)
 	{
-		printf("Tetriminos: %d \n", i);
-		printf("Tetriminos letter: %s \n", letter);
-		printf("%s", first->map);
-		i++;
+		printf("Maillon %d \n", i);
+		printf("%s", *first->tetris);
 		first = first->next;
-	}*/
+		i++;
+	}
 }
