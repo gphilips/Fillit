@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:22:49 by gphilips          #+#    #+#             */
-/*   Updated: 2016/12/06 18:14:47 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:50:02 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ char				**ft_buff_to_tab(char **tab, char *buff);
 int					ft_count_tetris(char *buff);
 //t_tetris			*ft_lst_new_tetris(char **tab, int id);
 //t_tetris			*ft_tab_to_lst(char **tab);
-char				*ft_alphabet(char *tab, int id);
 //void				ft_print_tetris(t_tetris *first);
+char				*ft_alphabet(char *tab, int id);
+void				ft_replace_tab(char **tab, int nbtetris);
 char				**ft_create_map(int size);
 void				ft_print_map(char **map);
 #endif
