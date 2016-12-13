@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 14:50:12 by gphilips          #+#    #+#             */
-/*   Updated: 2016/12/13 15:43:27 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/12/13 18:53:39 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,16 @@
 char	**ft_create_map(int size)
 {
 	int		i;
-	int		j;
 	char	**map;
 
 	i = 0;
-	j = 0;
 	if (!(map = (char**)malloc(sizeof(char*) * size + 1)))
 		return (NULL);
 	while (i < size)
 	{
 		if (!(map[i] = ft_strnew(size + 1)))
 			return (NULL);
-		while (j < size)
-		{
-			map[i][j] = '.';
-			j++;
-		}
-		map[i][j] = '\0';
-		j = 0;
+		ft_memset(map[i], '.', size);
 		i++;
 	}
 	map[i] = NULL;
