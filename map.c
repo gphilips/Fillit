@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/13 14:50:12 by gphilips          #+#    #+#             */
+/*   Updated: 2016/12/13 15:43:27 by gphilips         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 char	**ft_create_map(int size)
@@ -12,10 +24,10 @@ char	**ft_create_map(int size)
 		return (NULL);
 	while (i < size)
 	{
+		if (!(map[i] = ft_strnew(size + 1)))
+			return (NULL);
 		while (j < size)
 		{
-			if (!(map[j] = ft_strnew(size + 1)))
-				return (NULL);
 			map[i][j] = '.';
 			j++;
 		}

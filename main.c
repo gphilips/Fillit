@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/13 14:48:35 by gphilips          #+#    #+#             */
+/*   Updated: 2016/12/13 15:43:51 by gphilips         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		main(int argc, char **argv)
@@ -6,7 +18,6 @@ int		main(int argc, char **argv)
 //	t_tetris	*list_tet;
 	char		**map;
 	int			i;
-	int			j = 0;
 
 	i = 0;
 	tab = NULL;
@@ -30,6 +41,8 @@ int		main(int argc, char **argv)
 		ft_alphabet(tab[i], i);
 		i++;
 	}
+	ft_putendl("_____TAB______");
+	int			j = 0;
 	while (tab[j])
 	{
 		printf("Tab %d:\n%s", j, tab[j]);
@@ -37,6 +50,7 @@ int		main(int argc, char **argv)
 	}
 //	list_tet = ft_tab_to_lst(tab);
 //	ft_print_tetris(list_tet);
-//	ft_print_map(ft_create_map(4));
+	ft_putendl("_____MAP______");
+	ft_print_map(ft_create_map(8));
 	return (1);
 }
