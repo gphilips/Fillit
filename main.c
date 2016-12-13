@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 14:48:35 by gphilips          #+#    #+#             */
-/*   Updated: 2016/12/13 15:43:51 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/12/13 17:21:45 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 int		main(int argc, char **argv)
 {
 	char		**tab;
-//	t_tetris	*list_tet;
 	char		**map;
 	int			i;
 
 	i = 0;
 	tab = NULL;
-//	list_tet = NULL;
 	map = NULL;
 	if (argc != 2)
 	{
@@ -48,8 +46,14 @@ int		main(int argc, char **argv)
 		printf("Tab %d:\n%s", j, tab[j]);
 		j++;
 	}
-//	list_tet = ft_tab_to_lst(tab);
-//	ft_print_tetris(list_tet);
+	ft_putendl("_____REPLACE TAB_____");
+	ft_replace_tab(tab, (j - 1));
+	j = 0;
+	while (tab[j])
+	{
+		printf("%s\n", tab[j]);
+		j++;
+	}
 	ft_putendl("_____MAP______");
 	ft_print_map(ft_create_map(8));
 	return (1);

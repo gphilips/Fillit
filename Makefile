@@ -6,7 +6,7 @@
 #    By: gphilips <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/21 19:14:28 by gphilips          #+#    #+#              #
-#    Updated: 2016/11/21 19:14:38 by gphilips         ###   ########.fr        #
+#    Updated: 2016/12/13 17:04:31 by gphilips         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FILES = check_tetris.c	\
 		read.c			\
 		alphabet.c		\
 		map.c			\
+		replace_tab.c	\
 		main.c			\
 
 LIB = libft.a
