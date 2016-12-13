@@ -26,6 +26,11 @@ char	**ft_buff_to_tab(char **tab, char *buff)
 		}
 		tab[i][j] = '\0';
 		j = 0;
+		if (buff[k] != '\n' && buff[k] != '\0')
+		{
+			ft_putendl("Error: File not valid");
+			return (NULL);
+		}
 		k++;
 		i++;
 	}

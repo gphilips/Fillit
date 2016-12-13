@@ -12,12 +12,12 @@
 
 NAME = fillit
 
-FILES = list.c			\
-		check_tetris.c	\
+FILES = check_tetris.c	\
 		count_tetris.c	\
 		get_tetris.c	\
 		read.c			\
 		alphabet.c		\
+		map.c			\
 		main.c			\
 
 LIB = libft.a

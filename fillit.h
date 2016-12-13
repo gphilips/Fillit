@@ -18,26 +18,27 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 # include <stdio.h>
 
 #define BUFF_SIZE 4096
-
+/*
 typedef struct		s_tetris
 {
 	char			**tetris;
 	int				x;
 	int				y;
 	struct s_tetris	*next;
-}					t_tetris;
+}					t_tetris;*/
 int					ft_check_all(char **tab);
 char				**ft_read_tetris(char *argv);
 char				**ft_buff_to_tab(char **tab, char *buff);
 int					ft_count_tetris(char *buff);
-t_tetris			*ft_lst_new_tetris(char **tab, int id);
-t_tetris			*ft_tab_to_lst(char **tab);
-char				**ft_alphabet(char **tab, int id);
-void				ft_print_tetris(t_tetris *first);
-
+//t_tetris			*ft_lst_new_tetris(char **tab, int id);
+//t_tetris			*ft_tab_to_lst(char **tab);
+char				*ft_alphabet(char *tab, int id);
+//void				ft_print_tetris(t_tetris *first);
+char				**ft_create_map(int size);
+void				ft_print_map(char **map);
 #endif

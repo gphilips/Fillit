@@ -18,8 +18,9 @@ char	**ft_read_tetris(char *argv)
 	int			rd;
 	char		buff[BUFF_SIZE + 1];
 	char		**tab;
-	int			i = 0;
+	int			i;
 
+	i = 0;
 	tab = NULL;
 	if ((fd = open(argv, O_RDONLY)) == -1)
 	{
@@ -39,13 +40,6 @@ char	**ft_read_tetris(char *argv)
 		return (NULL);
 	}
 	tab = ft_buff_to_tab(tab, buff);
-	while (tab[i])
-	{
-		printf("Tab %d: \n %s \n", i + 1, tab[i]);
-		i++;
-	}
-	printf("Checkall: %d\n", ft_check_all(tab));
-	printf("Nb tetris: %d\n", ft_count_tetris(buff));
 	return (tab);
 }
 

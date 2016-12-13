@@ -55,6 +55,29 @@ static int		ft_check_line(char *buff)
 	return (1);
 }
 
+static int		ft_check_form(char *tetris)
+{
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 1;
+	while (tetris[i])
+	{
+		if (tetris[i] == '#')
+		{
+			if (tetris[i + 1] == '#')
+				count += 1;
+			if (tetris[i + 5] == '#')
+				count += 1;
+			if (count == 4)
+				return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 int				ft_check_all(char **tab)
 {
 	int		nb_tetris;
@@ -66,8 +89,9 @@ int				ft_check_all(char **tab)
 		nb_tetris++;
 	while (i < nb_tetris)
 	{
-		if ((ft_check_char(tab[i]) == 0) || (ft_check_line(tab[i]) == 0))
-			return (0);	
+		if ((ft_check_char(tab[i]) == 0) || (ft_check_line(tab[i]) == 0)
+			|| (ft_check_form(tab[i]) == 0))
+			return (0);
 		i++;
 	}
 	return (1);
