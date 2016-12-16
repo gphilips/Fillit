@@ -3,43 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/02 18:22:49 by gphilips          #+#    #+#             */
-/*   Updated: 2016/12/13 16:50:02 by gphilips         ###   ########.fr       */
+/*   Created: 2016/12/14 14:38:35 by fmuller           #+#    #+#             */
+/*   Updated: 2016/12/16 19:43:27 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include "libft/libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "libft.h"
 
-# include <stdio.h>
+# define BUFF_SIZE (20 * 26) + (1 * 25)
 
-#define BUFF_SIZE 4096
-/*
-typedef struct		s_tetris
+typedef struct	s_point
 {
-	char			**tetris;
-	int				x;
-	int				y;
-	struct s_tetris	*next;
-}					t_tetris;*/
-int					ft_check_all(char **tab);
-char				**ft_read_tetris(char *argv);
-char				**ft_buff_to_tab(char **tab, char *buff);
-int					ft_count_tetris(char *buff);
-//t_tetris			*ft_lst_new_tetris(char **tab, int id);
-//t_tetris			*ft_tab_to_lst(char **tab);
-//void				ft_print_tetris(t_tetris *first);
-char				*ft_alphabet(char *tab, int id);
-void				ft_replace_tab(char **tab, int nbtetris);
-char				**ft_create_map(int size);
-void				ft_print_map(char **map);
+	size_t	x;
+	size_t	y;
+}				t_point;
+
+typedef struct	s_point3
+{
+	size_t	k;
+	size_t	x;
+	size_t	y;
+}				t_point3;
+
+int				ft_error(int argc, char **argv, char ***tab);
+
+char			**ft_read_tetris(char *argv);
+
+char			*ft_alphabet(char *tab, int id);
+void			ft_replacetab(char **tab, int nbtetris);
+
+char			***ft_convert(char **tab, size_t nbtetri);
+
+size_t			ft_estimate_square_size(size_t	nbtetri);
+char			**ft_create_square(size_t square_size);
+void			ft_free_square(char **square);
+
+int				ft_test(char ***tab, int i, char **square);
+char			**ft_recreate_square(char ***t, size_t square_size);
 #endif
