@@ -23,7 +23,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@cd $(LIBDIR) && make 
+	@make -C $(LIBDIR)
 	@$(CC) -L $(LIBDIR) -l $(LIB) $(LDFLAGS) -o $@ $(OBJ)
 	@echo "fillit created"
 
@@ -33,12 +33,13 @@ $(NAME): $(OBJ)
 .PHONY: clean fclean re
 
 clean:
-	@rm -rf $(OBJ)
-	@cd $(LIBDIR) && make clean
+	@rm -f $(OBJ)
+	@make clean -C $(LIBDIR)
+	@echo "Erasing .o files."
 
 fclean: clean
-	@rm -rf $(NAME)
-	@cd $(LIBDIR) && make fclean
+	@rm -f $(NAME)
+	@make fclean -C $(LIBDIR)
+	@echo "Erasing $(NAME)."
 
 re: fclean all
-	@cd $(LIBDIR) && make re
