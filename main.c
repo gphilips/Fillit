@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 18:03:38 by fmuller           #+#    #+#             */
-/*   Updated: 2016/12/16 19:44:38 by gphilips         ###   ########.fr       */
+/*   Updated: 2017/01/02 16:37:04 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,15 @@ int		main(int argc, char **argv)
 		ft_alphabet(tab[j], j);
 	ft_replacetab(tab, (j - 1));
 	t = ft_convert(tab, j);
-	ft_memdel((void **)&*tab);
 	square_size = ft_estimate_square_size(j);
-	square = ft_recreate_square(t, square_size);
+	square = ft_create_square(square_size);
+	while (!ft_test(t, 0, square))
+	{
+		ft_free_square(square);
+		square_size++;
+		square = ft_create_square(square_size);
+	}
 	ft_put_tabs(square);
-	ft_memdel((void **)&*t);
+	ft_free_all(tab, square, t);
 	return (1);
 }

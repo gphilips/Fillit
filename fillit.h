@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:38:35 by fmuller           #+#    #+#             */
-/*   Updated: 2016/12/16 19:43:27 by gphilips         ###   ########.fr       */
+/*   Updated: 2017/01/02 16:33:43 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ char			**ft_create_square(size_t square_size);
 void			ft_free_square(char **square);
 
 int				ft_test(char ***tab, int i, char **square);
-char			**ft_recreate_square(char ***t, size_t square_size);
+void			ft_free_all(char **tab, char **square, char ***t);
 #endif

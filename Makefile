@@ -6,7 +6,7 @@
 #    By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/06 16:01:10 by fmuller           #+#    #+#              #
-#    Updated: 2016/12/16 19:46:24 by gphilips         ###   ########.fr        #
+#    Updated: 2017/01/02 16:37:55 by gphilips         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LDFLAGS =
 LIB = ft
 LIBDIR = libft
 SRC = main.c file_to_tab.c check.c modif_tab.c convert.c square.c \
-	  join_tetri.c recreate_square.c
+	  join_tetri.c free_all.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

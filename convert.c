@@ -6,12 +6,11 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 17:46:58 by fmuller           #+#    #+#             */
-/*   Updated: 2016/12/16 19:01:28 by gphilips         ###   ########.fr       */
+/*   Updated: 2017/01/02 16:38:25 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdlib.h>
 
 static size_t	ft_nb_of_col(char *tetri)
 {
